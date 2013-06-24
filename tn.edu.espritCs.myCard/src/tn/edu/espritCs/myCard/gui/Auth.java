@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -19,10 +20,10 @@ import java.awt.event.ActionEvent;
 
 public class Auth extends JFrame{
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField loginTextField;
+	private JPasswordField jPasswordField;
 	private LoginService loginService=new  LoginService();
-	private JLabel lblNewLabel_2; 
+	private JLabel lblError; 
 
 	/**
 	 * Launch the application.
@@ -50,30 +51,30 @@ public class Auth extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		loginTextField = new JTextField();
+		loginTextField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		jPasswordField = new JPasswordField();
+		jPasswordField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Login");
 		
 		JLabel lblNewLabel_1 = new JLabel("Password");
 		
-		lblNewLabel_2 = new JLabel("Authentification filed");
+		lblError = new JLabel("Authentification filed");
 		
-		lblNewLabel_2.setForeground(Color.RED);
-		lblNewLabel_2.setVisible(false);
+		lblError.setForeground(Color.RED);
+		lblError.setVisible(false);
 		JButton btnNewButton = new JButton("Sign in ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					
-					System.out.println(textField.getText());
-					System.out.println(textField_1.getText());
-					boolean b=loginService.loginAdmin(textField.getText(), textField_1.getText());
+					System.out.println(loginTextField.getText());
+					System.out.println(jPasswordField.getText());
+					boolean b=loginService.loginAdmin(loginTextField.getText(), jPasswordField.getText());
 					
-					boolean a=loginService.loginCashier(textField.getText(), textField_1.getText());
+					boolean a=loginService.loginCashier(loginTextField.getText(), jPasswordField.getText());
 					//System.out.println(b);
 					if(b)
 					{
@@ -88,7 +89,7 @@ public class Auth extends JFrame{
 					Auth.this.dispose();
 					}
 					else {
-						lblNewLabel_2.setVisible(true);
+						lblError.setVisible(true);
 					}
 					
 				} catch (Exception e) {
@@ -113,13 +114,13 @@ public class Auth extends JFrame{
 							
 							.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lblNewLabel_2)							
+							.addComponent(lblError)							
 							.addGap(35))
 							)
 					
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(jPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(loginTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(176, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap(197, Short.MAX_VALUE)
@@ -131,17 +132,17 @@ public class Auth extends JFrame{
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(82)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(loginTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jPasswordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_1))
 					.addGap(41)
 					
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2))
+						.addComponent(loginTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblError))
 					.addGap(20)
 					
 					.addComponent(btnNewButton)

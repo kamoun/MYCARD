@@ -9,7 +9,7 @@ public class UtilJdbc {
  private Connection connection;
  private String url = "jdbc:mysql://localhost:3306/mycard";
  private String user = "root";
- private String password = "bifordecide";
+ private String password = "root";
 
  public Connection testConnexion() {
 
